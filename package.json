@@ -6,6 +6,7 @@
     "name": "Henry Barreto",
     "email": "athenrybarreto@gmail.com"
   },
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
