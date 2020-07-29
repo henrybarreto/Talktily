@@ -1,0 +1,28 @@
+*
+    margin: 0
+    padding: 0
+
+.loading
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    align-content: center
+    justify-content: center
+    margin: auto
+    width: 100%
+    height: 100vh
+
+.loading__icon
+    animation-name: rotating-loading-icon
+    animation-duration: 2s
+    animation-direction: reverse
+    animation-timing-function: linear
+    animation-iteration-count: infinite
+    width: 100px
+    height: 100px
+
+@keyframes rotating-loading-icon
+    from
+        transform: rotate(0deg)
+    to
+        transform: rotate(360deg)
