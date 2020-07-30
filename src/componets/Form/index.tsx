@@ -1,4 +1,5 @@
 import React, {Component, FormEvent, Props} from "react"
+import { Redirect } from "react-router-dom"
 import { connect } from "react-redux"
 import { actionEnter } from "../../store/actions"
 
@@ -13,7 +14,8 @@ interface IState
 {
     username: string,
     yn: boolean,
-    terms: boolean
+    terms: boolean,
+    submit: boolean
 }
 
 class Form extends Component<IProps, IState>
@@ -22,9 +24,9 @@ class Form extends Component<IProps, IState>
     {
         super(props)
 
-        this.state = { username: "", yn: false, terms: false }
+        this.state = { username: "", yn: false, terms: false, submit: false }
+
         console.log(props)
-        console.log(this.context)
 
         this.formHandler = this.formHandler.bind(this)
         this.usernameValidation = this.usernameValidation.bind(this)
@@ -32,10 +34,10 @@ class Form extends Component<IProps, IState>
         this.termsValidation = this.termsValidation.bind(this)
     }
 
-    componentDidUpdate()
+    /*componentDidUpdate()
     {
-        console.log(this.state)
-    }
+        //console.log(this.state)
+    }*/
 
     usernameValidation(event: any)
     {
@@ -75,11 +77,12 @@ class Form extends Component<IProps, IState>
         event.preventDefault()
 
         this.props.dispatch(actionEnter(this.state.username, this.state.yn, this.state.terms))
+        this.setState({submit: true})
     } 
     
     render()
     {
-    return (
+        return (this.state.submit === false) ? (
         <form className="form" onSubmit={this.formHandler} > 
                 <div className="form__name form__item">
                     <label className="form__label form__label--text" htmlFor="username"> How do you want to be called?</label>
@@ -96,13 +99,12 @@ class Form extends Component<IProps, IState>
                 </div>
                 <div className="form__terms form__item">
                     <input className="form__input form__input--checkbox" id="terms" name="terms" type="checkbox" onClick={this.termsValidation} ></input>
-                    <label className="form__label form__label--checkbox" htmlFor="terms-" >I've readed and acceped all term</label>
+                    <label className="form__label form__label--checkbox" htmlFor="terms" >I've readed and acceped all term</label>
                 </ div>
                 <div className="form__confirmation">
                     <input className="form__input form__input--main-button" type="submit" value="Enter" />
                 </ div>
-        </form>
-        )
+        </form> ) : ( <Redirect to="/lobby" /> )
     }
 }
 

@@ -5,7 +5,6 @@ import { Helmet } from "react-helmet"
 import Header from "../../../componets/Header"
 import Form from "../../../componets/Form"
 import Back from "../../../componets/Nav/Back"
-import Lobby from "../../Lobby"
 
 import "../style.sass"
 

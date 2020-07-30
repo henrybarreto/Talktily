@@ -1,19 +1,29 @@
 import React, { Component } from "react";
-import Loading from "../../componets/Loading";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
+import Loading from "../../componets/Loading";
 
-class Lobby extends Component
+interface IProps
 {
-  constructor(props: any)
+  username: string,
+  yn: boolean,
+  terms: boolean,
+  dispatch: Function
+}
+
+class Lobby extends Component<IProps>
+{
+  constructor(props: IProps)
   {
     super(props)
+
   }
 
   render()
   {
-    return(
-      <Loading />
-    )
+    return (this.props.username && this.props.yn && this.props.terms) ? ( 
+    <Loading /> ) : (
+    <Redirect to="/" /> )
   }
 }
 

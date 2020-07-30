@@ -1,7 +1,6 @@
 import { createStore } from "redux";
 import { enterReducer } from "./reduces"
-// import { enterAction } from "./actions"
 
-const TalktilyStore = createStore(enterReducer)
+const appStore = createStore(enterReducer)
 
-export default TalktilyStore
+export default appStore

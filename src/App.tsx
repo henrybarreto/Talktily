@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom"
 import { Provider } from "react-redux"
-import TalktilyStore from './store/store';
+import appStore from './store/store';
 
 import "./App.sass"
 
@@ -20,10 +20,10 @@ class App extends Component
   render()
   {
     return (
-      <Provider store={TalktilyStore}>
+      <Provider store={appStore}>
       <Router>
         <Switch>
-          <Route path="/" exact component={Home} />
+          <Route path="/" component={Home} exact/>
           <Route path="/enter" component={Enter} />
           <Route path="/lobby" component={Lobby} />
           <Route>
